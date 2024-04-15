@@ -1,25 +1,32 @@
 NAME = phonebook
 
-SRC = phonebook.cpp
+SRC =	PhoneBook.cpp \
+		Contact.cpp \
+		main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 CPP = c++ -Wall -Werror -Wextra -std=c++98 -g
 
 all: $(NAME)
+	@echo "all done"
 
 $(NAME): $(OBJ)
-	$(CPP) $(OBJ) -o $(NAME)
+	@$(CPP) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CPP) -c $< -o $@
+	@$(CPP) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
+	@echo "clean done"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "fclean done"
 
 re: fclean all
+
+play: all clean
 
 .PHONY: all clean fclean re
