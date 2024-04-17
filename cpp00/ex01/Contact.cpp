@@ -14,15 +14,11 @@ Contact::~Contact() {}
 
 std::string		Contact::ContactFields( int i )
 {
-	//check se i > 4
 	return (this->fields[i]);
 }
 
 void	Contact::set_field(std::string name, int i)
 {
-	// std::cout << "||name:" << name << "||" << std::endl;
-	// std::cout << "||ContactFields(i):" << this->ContactFields(i) << "||" << std::endl;
-
 	if (this->ContactFields(i) == "first_name:")
 		this->first_name = name;
 	if (this->ContactFields(i) == "last_name:")

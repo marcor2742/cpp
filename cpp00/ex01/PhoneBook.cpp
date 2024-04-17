@@ -32,7 +32,8 @@ void PhoneBook::addValue( void )
 		i++;
 	}
 
-	this->contacts[this->last_contact++] = ctmp;
+	this->contacts[this->last_contact % 8] = ctmp;
+	this->last_contact++;
 
 }
 
@@ -44,10 +45,10 @@ void PhoneBook::printContacts() {
 	int j = 0;
 
 	std::cout << "┌──────────┬──────────┬──────────┬──────────┐" << std::endl;
-	std::cout << "│" << "  Index   " << "│" << "First Name" << "│" 
-		<< "Last Name " << "│" << " Nickname " << "│" << std::endl;
+	std::cout << "│" << "   Index  " << "│" << "First Name" << "│" 
+		<< " Last Name" << "│" << " Nickname " << "│" << std::endl;
 	std::cout << "├──────────┼──────────┼──────────┼──────────┤" << std::endl;
-	for(i = 0; i < last_contact; i++) {
+	for(i = 0; i < last_contact && i < 8; i++) {
 		num.str("");
 		num << i + 1;
 		std::cout
@@ -60,6 +61,8 @@ void PhoneBook::printContacts() {
 			<< "│"
 			<< this->format_table(contacts[i].get_field("nickname"))
 			<< "│" << std::endl;
+		if (i + 1 < last_contact && i + 1 < 8)
+			std::cout << "├──────────┼──────────┼──────────┼──────────┤" << std::endl;
     }
 
 	std::cout << "└──────────┴──────────┴──────────┴──────────┘" << std::endl;
