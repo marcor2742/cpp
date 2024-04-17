@@ -3,6 +3,7 @@
 
 #include "Contact.hpp"
 #include <iostream>
+#include <sstream>
 
 class PhoneBook
 {
@@ -14,6 +15,8 @@ class PhoneBook
 	PhoneBook();
 	~PhoneBook();
 	void 	addValue( void );
+	void	printContacts();
+	std::string		format_table( std::string name );
 };
 
 

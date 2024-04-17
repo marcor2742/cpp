@@ -10,14 +10,15 @@ class Contact
 	std::string nickname;
 	std::string phonenumber;
 	std::string darkest_secret;
-	std::string tmp[5];
+	std::string fields[5];
 	
 	public:
 	Contact();
 	~Contact();
-	void			set_f_name(std::string fName);
-	std::string		get_f_name( void );
-	std::string		stringaArray( int );
+	std::string		ContactFields( int );
+	void			set_field(std::string fName, int i);
+    std::string		get_field(std::string name);
+    //std::string		get_f_name( void );
 
 };
 
