@@ -37,7 +37,7 @@ int		main( void ) {
 	ints_t::iterator	wit_begin	= withdrawals.begin();
 	ints_t::iterator	wit_end		= withdrawals.end();
 
-	Account::displayAccountsInfos();
+	Account::displayAccountsInfos(); //accounts:8;total: 1...
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, dep_begin );
@@ -47,7 +47,7 @@ int		main( void ) {
 		(*(it.first)).makeDeposit( *(it.second) );
 	}
 
-	Account::displayAccountsInfos();
+	Account::displayAccountsInfos(); //accounts:8;total: 2...
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, wit_begin );
@@ -57,7 +57,7 @@ int		main( void ) {
 		(*(it.first)).makeWithdrawal( *(it.second) );
 	}
 
-	Account::displayAccountsInfos();
+	Account::displayAccountsInfos(); //accounts:8;total: 3...
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	return 0;
