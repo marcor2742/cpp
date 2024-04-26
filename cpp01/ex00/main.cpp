@@ -1,9 +1,10 @@
 #include "Zombie.hpp"
 
 int main() {
-    randomChump("ciao");
-    Zombie *cazzo = newZombie("we");
+    randomChump("gino");
+    Zombie *allocatedZombie = newZombie("ciro");
 
-    (*cazzo).announce();
+    (*allocatedZombie).announce();
+    delete (allocatedZombie);
     return(0);
 }
