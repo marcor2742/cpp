@@ -1,3 +1,6 @@
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
+
 #include <iostream>
 #include <string>
 
@@ -7,14 +10,10 @@ private:
     std::string type;
 public:
     Weapon();
+    Weapon(std::string);
     ~Weapon();
     const std::string& getType();
+    void setType(std::string);
 };
 
-Weapon::Weapon(/* args */)
-{
-}
-
-Weapon::~Weapon()
-{
-}
+#endif

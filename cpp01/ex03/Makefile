@@ -1,6 +1,9 @@
 NAME = violence
 
-SRC =	main.cpp
+SRC =	main.cpp \
+		HumanA.cpp \
+		HumanB.cpp \
+		Weapon.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
