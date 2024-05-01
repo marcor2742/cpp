@@ -2,12 +2,12 @@
 
 HumanA::HumanA(std::string str, Weapon& obj) : name(str), weapon(obj)
 {
-    std::cout << "HumanA è Americano" << std::endl;
+    std::cout << this->name << " è Americano" << std::endl;
 }
 
 HumanA::~HumanA()
 {
-    std::cout << "HumanA è morto in una sparatoria" << std::endl;  //mettere nome
+    std::cout << this->name << " è morto in una sparatoria" << std::endl;  //mettere nome
 }
 
 void    HumanA::attack()
