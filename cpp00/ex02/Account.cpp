@@ -14,14 +14,14 @@ Account::Account( int initial_deposit ) {
     ++_nbAccounts;
     this->_totalAmount = this->_totalAmount + initial_deposit;
     this->_amount = initial_deposit;
-    
+
     _displayTimestamp();
-    std::cout << "index:" << _accountIndex << ";amount:" << initial_deposit << ";created" << std::endl; 
+    std::cout << "index:" << _accountIndex << ";amount:" << initial_deposit << ";created" << std::endl;
 }
 
 Account::~Account(){
     _displayTimestamp();
-    std::cout << "index:" << _accountIndex << ";amount:" << this->_amount << ";closed" << std::endl; 
+    std::cout << "index:" << _accountIndex << ";amount:" << this->_amount << ";closed" << std::endl;
 }
 
 int Account::getNbAccounts(){
@@ -61,7 +61,7 @@ void Account::_displayTimestamp(){
 
 void Account::displayStatus( void ) const {
     _displayTimestamp();
-    std::cout << "index:" << _accountIndex << ";amount:" << this->_amount << ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals << std::endl; 
+    std::cout << "index:" << _accountIndex << ";amount:" << this->_amount << ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals << std::endl;
 }
 
 void Account::makeDeposit( int deposit ) {
@@ -92,4 +92,4 @@ bool Account::makeWithdrawal( int withdrawal ) {
 	}
 }
 
-//diff <(cut -c 19- 19920104_091532.log) <(cut -c 19- file)
+//./account > file && diff <(cut -c 19- 19920104_091532.log) <(cut -c 19- file) || echo fail

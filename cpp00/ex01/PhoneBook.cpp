@@ -5,6 +5,7 @@
 
 PhoneBook::PhoneBook()
 {
+	std::cout << "PhoneBook created" << std::endl;
 	this->last_contact = 0;
 }
 

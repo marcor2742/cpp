@@ -10,7 +10,9 @@ Contact::Contact()
 	this->fields[4] = "darkest_secret:";
 }
 
-Contact::~Contact() {}
+Contact::~Contact() {
+	std::cout << "Contact destroyed" << std::endl;
+}
 
 std::string		Contact::ContactFields( int i )
 {
