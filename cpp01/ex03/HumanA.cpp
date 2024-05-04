@@ -1,6 +1,6 @@
 #include "HumanA.hpp"
 
-HumanA::HumanA(std::string str, Weapon& obj) : name(str), weapon(obj)
+HumanA::HumanA(std::string str, Weapon &obj) : name(str), weapon(obj)
 {
     std::cout << this->name << " è Americano" << std::endl;
 }
