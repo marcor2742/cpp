@@ -5,7 +5,7 @@ SRC =	tests.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
-CPP = c++ -std=c++98 -g
+CPP = c++ -Wall -Werror -Wextra -std=c++98 -g
 
 all: $(NAME)
 	@echo "all done"
