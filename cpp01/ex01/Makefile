@@ -6,7 +6,7 @@ SRC =	main.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
-CPP = c++ -std=c++98 -g
+CPP = c++ -Wall -Wextra -Werror -std=c++98 -g
 
 all: $(NAME)
 
