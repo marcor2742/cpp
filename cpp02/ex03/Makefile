@@ -1,4 +1,4 @@
-NAME = fixed
+NAME = triangle
 
 SRC =	main.cpp \
 		Fixed.cpp \
