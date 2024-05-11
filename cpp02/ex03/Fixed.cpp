@@ -15,7 +15,8 @@ Fixed::~Fixed()
 
 Fixed &Fixed::operator=(Fixed const &rhs)
 {
-    this->raw_bits = rhs.raw_bits;
+	if ( this != &rhs)
+    	this->raw_bits = rhs.raw_bits;
     return *this;
 }
 

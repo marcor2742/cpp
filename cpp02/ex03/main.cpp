@@ -1,18 +1,15 @@
-#include "Fixed.hpp" 
+#include "Fixed.hpp"
+#include "Point.hpp"
 
-int main( void ) {
-    Fixed a;
-    Fixed const b( Fixed( 5.05f ) / Fixed( 2 ) );
-	
-    std::cout << a << std::endl;
-    std::cout << ++a << std::endl;
-    std::cout << a << std::endl;
-    std::cout << a++ << std::endl;
-    std::cout << a << std::endl;
+int main( void ) 
+{
+	Point a(9.8f, 8.1f);
+	Point b(2.6f, 6.2f);
+	Point c(7.9f, 1.1f);
+	Point toFind(6, 5);
 
-    std::cout << b << std::endl;
-
-    std::cout << Fixed::max( a, b ) << std::endl;
-
-    return 0;
+	if (bsp(a, b, c, toFind))
+		std::cout << "il punto è contenuto nel triangolo" << std::endl;
+	else
+		std::cout << "il punto non è contenuto nel triangolo" << std::endl;
 }

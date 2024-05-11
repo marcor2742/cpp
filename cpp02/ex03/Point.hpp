@@ -1,5 +1,5 @@
 #ifndef POINT_HPP
-#define POINR_HPP
+#define POINT_HPP
 
 #include "Fixed.hpp"
 
@@ -16,9 +16,12 @@ public:
 	Point &operator=(const Point &rhs);
 
 	Point(const Fixed x, const Fixed y);
+	const Fixed &getX() const;
+	const Fixed &getY() const;
 	//anything else useful
 };
 
+Fixed checkTrinagle(Point const &a, Point const &b, Point const &c);
 bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif

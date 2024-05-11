@@ -1,7 +1,9 @@
 NAME = fixed
 
 SRC =	main.cpp \
-		Fixed.cpp
+		Fixed.cpp \
+		Point.cpp \
+		bsp.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
