@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 00:28:00 by marco             #+#    #+#             */
-/*   Updated: 2024/05/12 00:28:01 by marco            ###   ########.fr       */
+/*   Updated: 2024/05/12 18:39:58 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,24 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
 	(void)point;
 	Fixed A = checkTrinagle(a, b, c);
-
     Fixed A1 = checkTrinagle(a, b, point);
     Fixed A2 = checkTrinagle(b, c, point);
     Fixed A3 = checkTrinagle(c, a, point);
 
-	std::cout << A << std::endl;
-	std::cout << A1 << " + " << A2 << " + " << A3 << " = " << A1 + A2 + A3 << std::endl;
+	Fixed tolerance(0.01f);
+	Fixed diff = A - (A1 + A2 + A3);
+	std::cout << diff.getRawBits() << " = " << diff << " < " << tolerance.getRawBits() << " = " << tolerance << std::endl;
+	
+	if (diff.getRawBits() < 0) {
+	    diff = diff * Fixed(-1);
+	}
 
-	if (A == A1 + A2 + A3)
-		return true;
+	if (A == 0)
+		std::cout << "è un segmento, ma comunque ";
+	else
+		std::cout << "è un triangolo e ";
+	
+	if (diff <= tolerance)
+	    return true;
 	return false;
 }

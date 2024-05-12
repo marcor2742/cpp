@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 00:27:33 by marco             #+#    #+#             */
-/*   Updated: 2024/05/12 00:27:35 by marco            ###   ########.fr       */
+/*   Updated: 2024/05/12 18:40:14 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 int main( void ) 
 {
-	Point a(9.8f, 8.1f);
-	Point b(2.6f, 6.2f);
-	Point c(7.9f, 1.1f);
-	Point toFind(6, 5);
+	Point a(12.21f, 4.7f);
+	Point b(2.21f, 2.43f);
+	Point c(2.21f, 6.83f);
+	Point toFind(2.20f, 4.0f);
 
 	if (bsp(a, b, c, toFind))
-		std::cout << "il punto è contenuto nel triangolo" << std::endl;
+		std::cout << "il punto è contenuto in esso" << std::endl;
 	else
-		std::cout << "il punto non è contenuto nel triangolo" << std::endl;
+		std::cout << "il punto non è contenuto in esso" << std::endl;
 }
