@@ -4,6 +4,12 @@
 #include <iostream>
 #include <string>
 
+#define YELLOW "\033[0;33m"
+#define GREEN "\033[0;32m"
+#define CYAN "\033[0;36m"
+#define MAGENTA "\033[0;35m"
+#define END "\033[0m"
+
 class ClapTrap
 {
 protected:

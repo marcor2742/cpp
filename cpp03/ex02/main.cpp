@@ -9,7 +9,7 @@ int main()
 	ScavTrap luca("luca");
 	luca.attack("gino");
 	FragTrap carl("carl");
-	luca.attack("carl");
+	carl.attack("gino");
 	
 	gino.beRepaired(123456);
 	gino.takeDamage(2);

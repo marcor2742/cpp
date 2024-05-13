@@ -2,12 +2,12 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "ClapTrap default constructor called" << std::endl;
+	std::cout <<YELLOW "ClapTrap default constructor called" END<< std::endl;
 }
 
 ClapTrap::ClapTrap(std::string str) : Name(str), HitPoints(10), EnergyPoints(10), AttackDamage(0)
 {
-	std::cout << "ClapTrap " << this->Name << " constructed" << std::endl;
+	std::cout <<YELLOW "ClapTrap " END<< this->Name << " constructed" << std::endl;
 }
 
 
@@ -18,7 +18,7 @@ ClapTrap::ClapTrap(const ClapTrap &obj)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << this->Name << " destructed" << std::endl;
+	std::cout <<YELLOW "ClapTrap " END<< this->Name << " destructed" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &obj)
@@ -37,10 +37,10 @@ void ClapTrap::attack(const std::string& target)
 {
 	if (this->EnergyPoints == 0)
 	{
-		std::cout << "ClapTrap " << this->Name << " non ha EnergyPoint" << std::endl;
+		std::cout <<YELLOW "ClapTrap " END<< this->Name << " non ha EnergyPoint" << std::endl;
 		return;
 	}
-	std::cout << "ClapTrap " << this->Name << " attacks " << target << ", causing " << this->AttackDamage << " points of damage" << std::endl;
+	std::cout <<YELLOW "ClapTrap " END<< this->Name << " attacks " << target << ", causing " << this->AttackDamage << " points of damage" << std::endl;
 	this->EnergyPoints--;
 }
 
@@ -48,10 +48,10 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
 	if(this->HitPoints == 0)
 	{
-		std::cout << "ClapTrap " << this->Name << " is already dead, stop" << std::endl;
+		std::cout <<YELLOW "ClapTrap " END<< this->Name << " is already dead, stop" << std::endl;
 		return;
 	}
-	std::cout << "ClapTrap " << this->Name << " take " << amount << " point of damage";
+	std::cout <<YELLOW "ClapTrap " END<< this->Name << " take " << amount << " point of damage";
 	if (this->HitPoints <= (int)amount)
 	{
 		std::cout << " and died" << std::endl;
@@ -68,18 +68,18 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->EnergyPoints == 0)
 	{
-		std::cout << "ClapTrap " << this->Name << " non ha EnergyPoint" << std::endl;
+		std::cout <<YELLOW "ClapTrap " END<< this->Name << " non ha EnergyPoint" << std::endl;
 		return;
 	}
 
 	switch(this->HitPoints)
 	{
 		case 0:
-			std::cout << "ClapTrap " << this->Name << " is dead and can't be resurrected" << std::endl;
+			std::cout <<YELLOW "ClapTrap " END<< this->Name << " is dead and can't be resurrected" << std::endl;
 			this->EnergyPoints--;
 			return;
 		case 10:
-			std::cout << "ClapTrap " << this->Name << " is already at his peak of Hitpoints" << std::endl;
+			std::cout <<YELLOW "ClapTrap " END<< this->Name << " is already at his peak of Hitpoints" << std::endl;
 			this->EnergyPoints--;
 			return;
 		default:
@@ -87,7 +87,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 
 	int result = 10;
-	std::cout << "ClapTrap " << this->Name << " has repaired himself with " << amount << " point";
+	std::cout <<YELLOW "ClapTrap " END<< this->Name << " has repaired himself with " << amount << " point";
 	if (this->HitPoints + amount >= 10)
 	{
 		this->HitPoints = result;
