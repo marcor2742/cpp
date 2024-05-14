@@ -5,7 +5,7 @@ ClapTrap::ClapTrap()
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string str) : Name(str), HitPoints(10), EnergyPoints(10), AttackDamage(0)
+ClapTrap::ClapTrap(std::string str) : Name(str), HitPoints(10), EnergyPoints(10), AttackDamage(0), MaxHitPoints(HitPoints)
 {
 	std::cout << "ClapTrap " << this->Name << " constructed" << std::endl;
 }
@@ -29,6 +29,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &obj)
 		this->HitPoints = obj.HitPoints;
 		this->EnergyPoints = obj.EnergyPoints;
 		this->AttackDamage = obj.AttackDamage;
+		this->MaxHitPoints = obj.MaxHitPoints;
 	}
 	return *this;
 }
@@ -71,24 +72,22 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << this->Name << " non ha EnergyPoint" << std::endl;
 		return;
 	}
-
-	switch(this->HitPoints)
+	if (this->HitPoints == 0)
 	{
-		case 0:
-			std::cout << "ClapTrap " << this->Name << " is dead and can't be resurrected" << std::endl;
-			this->EnergyPoints--;
-			return;
-		case 10:
-			std::cout << "ClapTrap " << this->Name << " is already at his peak of Hitpoints" << std::endl;
-			this->EnergyPoints--;
-			return;
-		default:
-			break;
+	    std::cout << "ClapTrap " << this->Name << " is dead and can't be resurrected" << std::endl;
+	    this->EnergyPoints--;
+	    return;
+	}
+	else if (this->HitPoints == this->MaxHitPoints)
+	{
+	    std::cout << "ClapTrap " << this->Name << " is already at his peak of Hitpoints" << std::endl;
+	    this->EnergyPoints--;
+	    return;
 	}
 
-	int result = 10;
+	int result = this->MaxHitPoints;
 	std::cout << "ClapTrap " << this->Name << " has repaired himself with " << amount << " point";
-	if (this->HitPoints + amount >= 10)
+	if (this->HitPoints + (int)amount >= this->MaxHitPoints)
 	{
 		this->HitPoints = result;
 	}
@@ -99,4 +98,9 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	std::cout << " and now he has " << result << " HitPoints" << std::endl;
 	this->EnergyPoints--;
+}
+
+int ClapTrap::getHitPoints()
+{
+	return this->HitPoints;
 }
