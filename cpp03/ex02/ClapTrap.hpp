@@ -17,12 +17,14 @@ protected:
 	int HitPoints;
 	int EnergyPoints;
 	int AttackDamage;
+	int MaxHitPoints;
 public:
 	ClapTrap();
 	ClapTrap(std::string str);
 	ClapTrap(const ClapTrap &obj);
 	~ClapTrap();
 	ClapTrap &operator=(const ClapTrap &obj);
+	int getHitPoints();
 
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
