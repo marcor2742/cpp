@@ -1,6 +1,7 @@
 //#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main()
 {
@@ -16,7 +17,6 @@ int main()
 	std::cout << END;
 	//for (int i = 0; i < 51; i++)
 		luca.attack("gino");
-
 	std::cout << luca.getHitPoints() << std::endl;
 
 	std::cout << GREEN;
@@ -25,6 +25,15 @@ int main()
 	//for (int i = 0; i < 101; i++)
 		carl.attack("gino");
 	std::cout << carl.getHitPoints() << std::endl;
+
+	std::cout << MAGENTA;
+	DiamondTrap erik("erik");
+	std::cout << END;
+	//for (int i = 0; i < 51; i++)
+		erik.attack("gino");
+	std::cout << erik.getHitPoints() << std::endl;
+
+
 	
 	std::cout << std::endl;
 
@@ -36,6 +45,14 @@ int main()
 	carl.beRepaired(45);
 	carl.takeDamage(45);
 	carl.highFivesGuys();
+
+	std::cout << std::endl;
+	
+	erik.beRepaired(45);
+	erik.takeDamage(45);
+	erik.guardGate();
+	erik.highFivesGuys();
+	erik.whoAmI();
 
 	std::cout << std::endl;
 	
