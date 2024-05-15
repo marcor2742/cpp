@@ -25,6 +25,8 @@ public:
 	~ClapTrap();
 	ClapTrap &operator=(const ClapTrap &obj);
 	int getHitPoints();
+	int getEnergyPoints();
+	int getAttackDamage();
 
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);

@@ -4,21 +4,21 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class DiamondTrap : public FragTrap, public ScavTrap
+class DiamondTrap : public virtual ScavTrap, public virtual FragTrap
 {
 private:
 	std::string _name;
+	int HitPoints;
+	int EnergyPoints;
+	int AttackDamage;
+	int MaxHitPoints;
 	DiamondTrap();
-	using ScavTrap::HitPoints;
-	using ScavTrap::EnergyPoints;
-	using FragTrap::AttackDamage;
-	using ScavTrap::MaxHitPoints;
 public:
 	DiamondTrap(std::string str);
-	void attack(const std::string& target);
 	~DiamondTrap();
 	DiamondTrap(DiamondTrap const &rhs);
 	DiamondTrap &operator=(DiamondTrap const &rhs);
+	void pEnergyPoint();
 
 	using ScavTrap::attack;
 	void whoAmI();
