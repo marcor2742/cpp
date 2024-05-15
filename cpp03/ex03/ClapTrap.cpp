@@ -104,3 +104,13 @@ int ClapTrap::getHitPoints()
 {
 	return this->HitPoints;
 }
+
+int ClapTrap::getEnergyPoints()
+{
+	return this->EnergyPoints;
+}
+
+int ClapTrap::getAttackDamage()
+{
+	return this->AttackDamage;
+}

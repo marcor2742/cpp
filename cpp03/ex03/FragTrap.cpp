@@ -12,15 +12,20 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->EnergyPoints = 100;
 	this->AttackDamage = 30;
 	this->MaxHitPoints = this->HitPoints;
+	std::cout << "FragTrap constructor: " << FragTrap::HitPoints << std::endl;
+	std::cout << "FragTrap constructor: " << FragTrap::EnergyPoints << std::endl;
+	std::cout << "FragTrap constructor: " << FragTrap::AttackDamage << std::endl;
+	std::cout << "FragTrap constructor: " << FragTrap::MaxHitPoints << std::endl;
+
 }
 
-FragTrap::FragTrap(FragTrap const &rhs) : ClapTrap(rhs) {}
+// FragTrap::FragTrap(FragTrap const &rhs) : ClapTrap(rhs) {}
 
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap " << this->Name << " destructed" << std::endl;
 }
-
+/*
 FragTrap &FragTrap::operator=(FragTrap const &rhs)
 {
 	if (this != &rhs)
@@ -28,7 +33,7 @@ FragTrap &FragTrap::operator=(FragTrap const &rhs)
 		ClapTrap::operator=(rhs);
 	}
 	return *this;
-}
+}*/
 
 void FragTrap::attack(std::string const &target)
 {

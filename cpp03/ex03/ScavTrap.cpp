@@ -17,12 +17,13 @@ ScavTrap::ScavTrap(std::string str) : ClapTrap(str)
 	this->EnergyPoints = 50;
 	this->AttackDamage = 20;
 	this->MaxHitPoints = this->HitPoints;
+	std::cout << "costruttore scavtrap: " << ScavTrap::HitPoints << std::endl;
+	std::cout << "costruttore scavtrap: " << ScavTrap::EnergyPoints << std::endl;
+	std::cout << "costruttore scavtrap: " << ScavTrap::AttackDamage << std::endl;
+	std::cout << "costruttore scavtrap: " << ScavTrap::MaxHitPoints << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &obj) : ClapTrap(obj)
-{
-	//*this = obj;
-}
+/*ScavTrap::ScavTrap(const ScavTrap &obj) : ClapTrap(obj) {}
 
 ScavTrap &ScavTrap::operator=(ScavTrap const &obj)
 {
@@ -31,7 +32,7 @@ ScavTrap &ScavTrap::operator=(ScavTrap const &obj)
 		ClapTrap::operator=(obj);
 	}
 	return *this;
-}
+}*/
 
 void ScavTrap::attack(const std::string& target)
 {
