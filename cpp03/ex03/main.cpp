@@ -40,7 +40,7 @@ int main()
 	std::cout << erik.getAttackDamage() << std::endl;
 	std::cout << END;
 	//for (int i = 0; i < 51; i++)
-		//erik.attack("gino");
+		erik.attack("gino");
 
 
 	
@@ -55,15 +55,14 @@ int main()
 	//carl.takeDamage(45);
 	//carl.highFivesGuys();
 //
-	//std::cout << std::endl;
-	//
-	//erik.pEnergyPoint();
-	//erik.beRepaired(45);
-	//erik.takeDamage(45);
-	//erik.guardGate();
-	//erik.highFivesGuys();
-	//erik.whoAmI();
-//
-	//std::cout << std::endl;
+	std::cout << std::endl;
+
+	erik.takeDamage(45);
+	erik.beRepaired(45);
+	erik.guardGate();
+	erik.highFivesGuys();
+	erik.whoAmI();
+
+	std::cout << std::endl;
 	
 }
