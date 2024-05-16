@@ -2,23 +2,23 @@
 
 Brain::Brain()
 {
-	std::cout << "Brain default constructor called" << std::endl;
+	std::cout <<GREEN "Brain default constructor called" RESET<< std::endl;
 }
 
 Brain::~Brain()
 {
-	std::cout << "Brain destructor called" << std::endl;
+	std::cout <<GREEN "Brain destructor called" RESET<< std::endl;
 }
 
 Brain::Brain(const Brain &obj)
 {
-	std::cout << "Brain copy constructor called" << std::endl;
+	std::cout <<GREEN "Brain copy constructor called" RESET<< std::endl;
 	*this = obj;
 }
 
 Brain &Brain::operator=(const Brain &obj)
 {
-	std::cout << "Brain assignment operator overload called" << std::endl;
+	std::cout <<GREEN "Brain assignment operator overload called" RESET<< std::endl;
 	if (this != &obj)
     {
         for (int i = 0; i < 100; i++)
