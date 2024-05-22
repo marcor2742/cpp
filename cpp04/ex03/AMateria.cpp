@@ -39,5 +39,5 @@ std::string const &AMateria::getType() const
 
 void AMateria::use(ICharacter &target)
 {
-	std::cout << "implementa use, scemo" << std::endl;
+	std::cout << "ma certo, usa un materiale astratto" << std::endl;
 }

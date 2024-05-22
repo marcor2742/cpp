@@ -1,6 +1,9 @@
-NAME = FragTrap
+NAME = AMateria?
 
-SRC =	main.cpp
+SRC =	main.cpp \
+		AMateria.cpp \
+		Ice.cpp \
+		Cure.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
