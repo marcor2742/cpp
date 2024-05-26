@@ -2,6 +2,7 @@
 #define ICHARACTER_HPP
 
 #include "AMateria.hpp"
+#define MAXTRASH 100
 
 class ICharacter
 {

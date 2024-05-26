@@ -7,19 +7,21 @@ class Character : public ICharacter
 {
 private:
 	std::string name;
-	AMateria *inventary[4];
+	AMateria *inventory[4];
+	AMateria *unequiped[MAXTRASH];
 	int nMaterials;
+	int nUnequiped;
 public:
-	ICharacter();
-	ICharacter(std::string str);
-	ICharacter(ICharacter const &copychar);
-	ICharacter &operator=(ICharacter const &copychar);
+	Character();
+	Character(std::string str);
+	Character(Character const &copychar);
+	Character &operator=(Character const &copychar);
 	
-	virtual ~Character();
-    virtual std::string const & getName() const;
-    virtual void equip(AMateria* m);
-    virtual void unequip(int idx);
-    virtual void use(int idx, ICharacter& target);
+	~Character();
+    std::string const &getName() const;
+    void equip(AMateria* m);
+    void unequip(int idx);
+    void use(int idx, ICharacter& target);
 };
 
 #endif

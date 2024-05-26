@@ -18,6 +18,7 @@ Cure::Cure(Cure const &copycure) : AMateria(copycure)
 
 Cure &Cure::operator=(Cure const &copycure)
 {
+	std::cout << "Cure assignation operator called" << std::endl;
 	if (this != &copycure)
 	{
 		AMateria::operator=(copycure);

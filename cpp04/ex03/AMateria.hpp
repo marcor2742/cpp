@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "colours.h"
 
 class AMateria
 {
