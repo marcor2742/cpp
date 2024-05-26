@@ -10,7 +10,7 @@ Ice::~Ice()
 	std::cout << "Ice destructor called" << std::endl;
 }
 
-Ice::Ice(Ice const &copyice)
+Ice::Ice(Ice const &copyice) : AMateria(copyice)
 {
 	std::cout << "copy constructor with ";
 	*this = copyice;
@@ -20,12 +20,12 @@ Ice &Ice::operator=(Ice const &copyice)
 {
 	if (this != &copyice)
 	{
-		AMateria::operator=(copyice)
+		AMateria::operator=(copyice);
 	}
 	return *this;
 }
 
-Amateria *Ice::clone() const
+AMateria *Ice::clone() const
 {
 	Ice *newobj = new Ice(*this);
 	return newobj;
@@ -33,5 +33,5 @@ Amateria *Ice::clone() const
 
 void Ice::use(ICharacter &target)
 {
-	std::cout << "hai usato del ghiaccio, si è sciolto" << std::endl;
+	std::cout << "hai usato del ghiaccio su " << target.getName() << ", si è sciolto" << std::endl;
 }

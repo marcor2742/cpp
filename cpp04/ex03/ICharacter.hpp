@@ -4,6 +4,8 @@
 #include "AMateria.hpp"
 #define MAXTRASH 100
 
+class AMateria;
+
 class ICharacter
 {
 public:

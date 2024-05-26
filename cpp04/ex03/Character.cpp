@@ -3,24 +3,24 @@
 Character::Character() : name("default"), nMaterials(0), nUnequiped(0)
 {
 	for (int i = 0; i < 4; i++)
-        inventory[i] = nullptr;
-	std::cout BLUE<< "Character default constructor called" <<END std::endl;
+        inventory[i] = NULL;
+	std::cout <<BLUE "Character default constructor called" END<< std::endl;
 }
 
 Character::Character(std::string str) : name(str), nMaterials(0), nUnequiped(0)
 {
-	std::cout BLUE<< name << " character constructor called" <<END std::endl;
+	std::cout << BLUE << name << " character constructor called" END<< std::endl;
 }
 
 Character::Character(Character const &copychar)
 {
-	std::cout BLUE<< "copy constructor with ";
+	std::cout <<BLUE "copy constructor with ";
 	*this = copychar;
 }
 
 Character &Character::operator=(Character const &copychar)
 {
-	std::cout << "Character assignation operator called" << std::endl;
+	std::cout <<BLUE "Character assignation operator called" END<< std::endl;
 	if (this != &copychar)
 	{
 		name = copychar.name;
@@ -34,12 +34,12 @@ Character &Character::operator=(Character const &copychar)
 				inventory[i] = copychar.inventory[i]->clone();
 		}
 	}
-	return (*this)
+	return (*this);
 }
 
 Character::~Character()
 {
-	std::cout << 
+	std::cout << BLUE << name << " destructor called" END<< std::endl;
 	for (int i = 0; i < 4; i++)
     {
         if (inventory[i])
@@ -63,7 +63,7 @@ void Character::equip(AMateria* m)
 	else
 	{
 		inventory[nMaterials] = m;
-		nMaterials++
+		nMaterials++;
 	}
 }
 
@@ -79,10 +79,10 @@ void Character::unequip(int idx)
 			std::cout << name << " ha inquinato troppo e ora non può più buttare le cose per terra" << std::endl;
 		else
 		{
-        	unequipped[nUnequipped] = inventory[idx];
-        	nUnequipped++;
-			unequipped[nUnequipped] = nullptr; 
-        	inventory[idx] = nullptr;
+        	unequiped[nUnequiped] = inventory[idx];
+        	nUnequiped++;
+			unequiped[nUnequiped] = NULL; 
+        	inventory[idx] = NULL;
 		}
 	}
 

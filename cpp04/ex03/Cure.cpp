@@ -26,7 +26,7 @@ Cure &Cure::operator=(Cure const &copycure)
 	return *this;
 }
 
-Amateria *Cure::clone() const
+AMateria *Cure::clone() const
 {
 	Cure *newobj = new Cure(*this);
 	return newobj;
@@ -34,5 +34,5 @@ Amateria *Cure::clone() const
 
 void Cure::use(ICharacter &target)
 {
-	std::cout << "hai usato delle cure, è ricomparsa la tua gamba amputata!" << std::endl;
+	std::cout << "hai usato delle cure su " << target.getName() << ", è ricomparsa la tua gamba amputata!" << std::endl;
 }

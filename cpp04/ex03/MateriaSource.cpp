@@ -2,7 +2,7 @@
 
 MateriaSource::MateriaSource() : nMaterials(0)
 {
-	std::cout BLUE<< "MateriaSource default constructor called" <<END std::endl;
+	std::cout <<BLUE "MateriaSource default constructor called" END<< std::endl;
 	for (int i = 0; i < 4; i++)
 		materia[i] = NULL;
 }
