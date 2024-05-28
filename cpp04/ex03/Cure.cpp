@@ -34,5 +34,5 @@ AMateria *Cure::clone() const
 
 void Cure::use(ICharacter &target)
 {
-	std::cout << "hai usato delle cure su " << target.getName() << ", è ricomparsa la tua gamba amputata!" << std::endl;
+	std::cout << "usi delle cure su " << target.getName() << ", è ricomparsa la tua gamba amputata!" << std::endl;
 }

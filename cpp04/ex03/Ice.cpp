@@ -33,5 +33,5 @@ AMateria *Ice::clone() const
 
 void Ice::use(ICharacter &target)
 {
-	std::cout << "hai usato del ghiaccio su " << target.getName() << ", si è sciolto" << std::endl;
+	std::cout << "spari del ghiaccio a " << target.getName() << ", il ghiccio si è sciolto prima di colpirlo" << std::endl;
 }
