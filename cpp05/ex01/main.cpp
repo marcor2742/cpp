@@ -73,4 +73,13 @@ int main(void)
 	} catch (std::exception &e) {
 		std::cerr << RESET RED "Exception: " << e.what() << RESET << std::endl;
 	}
+	try
+	{
+		std::cout << BLUE "-----signing-----" RESET << std::endl;
+		bureaucrat_1.signForm(form_1);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << RESET RED "Exception: " << e.what() << RESET << std::endl;
+	}
 }
