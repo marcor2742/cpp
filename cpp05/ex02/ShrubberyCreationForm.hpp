@@ -4,6 +4,7 @@
 #include "AForm.hpp"
 #include <iostream>
 #include <string>
+#include <fstream>
 
 class ShrubberyCreationForm : public AForm
 {
@@ -12,6 +13,7 @@ private:
 
 public:
 	ShrubberyCreationForm();
+	ShrubberyCreationForm(std::string target);
 	ShrubberyCreationForm(const ShrubberyCreationForm& other);
 	~ShrubberyCreationForm();
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);

@@ -1,13 +1,19 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : target(0) {}
+RobotomyRequestForm::RobotomyRequestForm()
+	: AForm("robotomy", 25, 5), target("default target") {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : target(other.target) {}
+RobotomyRequestForm::RobotomyRequestForm(std::string target)
+	: AForm("robotomy", 25, 5), target(target) {}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
+	: AForm(other), target(other.target) {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
 	if (this != &other) {
+		AForm::operator=(other);
 		target = other.target;
 	}
 	return *this;
@@ -15,5 +21,14 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+	if (executor.getGrade() > getGradeToSign() && executor.getGrade() > getGradeToExecute())
+		throw GradeTooLowException();
+	if (getSignedAForm() == false)
+		throw FormNotSigned();
 
+	std::cout << "VRRRR⢀⡦RR⣿⣄⣀⡠RRRRRRR⣀⡦⡠RR" << std::endl;
+	if (rand() < RAND_MAX / 2)
+		std::cout << target << " has been robotomized successfully." << std::endl;
+	else
+		std::cout << "The robotomy of " << target << " failed." << std::endl;
 }

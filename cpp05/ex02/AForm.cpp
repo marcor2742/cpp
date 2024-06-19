@@ -52,6 +52,18 @@ int AForm::getGradeToExecute() const
 	return gradeToExecute;
 }
 
+void AForm::beSigned(Bureaucrat &bureaucrat)
+{
+	if (signedAForm == true || bureaucrat.getGrade() <= gradeToSign)
+	{
+		signedAForm = true;
+	}
+	else
+	{
+		throw GradeTooLowException();
+	}
+}
+
 std::ostream &operator<<(std::ostream &out, const AForm &form)
 {
 	out << form.getName() << ", sign grade "

@@ -26,7 +26,7 @@ public:
 	bool getSignedAForm() const;
 	int getGradeToSign() const;
 	int getGradeToExecute() const;
-	virtual void beSigned(Bureaucrat &bureaucrat) = 0;
+	void beSigned(Bureaucrat &bureaucrat);
 
 	virtual void execute(Bureaucrat const &executor) const = 0;
 
@@ -45,6 +45,14 @@ public:
     		{
     		    return "AForm: Grade too low";
     		}
+	};
+	class FormNotSigned : public std::exception
+	{
+		public:
+			const char *what() const throw()
+			{
+				return "AForm: Form not signed";
+			}
 	};
 };
 

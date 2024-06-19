@@ -10,7 +10,7 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << e.what() << "\n" <<std::endl;
+		std::cerr << e.what() << "\n" << std::endl;
 	}
 
 	Bureaucrat luca("luca", 10);

@@ -4,6 +4,7 @@
 #include "AForm.hpp"
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 class RobotomyRequestForm : public AForm
 {
@@ -12,6 +13,7 @@ private:
 
 public:
 	RobotomyRequestForm();
+	RobotomyRequestForm(std::string target);
 	RobotomyRequestForm(const RobotomyRequestForm& other);
 	~RobotomyRequestForm();
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
