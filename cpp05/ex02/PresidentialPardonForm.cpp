@@ -12,3 +12,8 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	}
 	return *this;
 }
+
+void PresidentialPardonForm::execute(Bureaucrat const &executor) const
+{
+
+}
