@@ -63,3 +63,12 @@ void Form::beSigned(Bureaucrat &bureaucrat)
 		throw GradeTooLowException();
 	}
 }
+
+std::ostream &operator<<(std::ostream &out, const Form &form)
+{
+	out << form.getName() << ", sign grade "
+          << form.getGradeToSign() << ", exec grade "
+          << form.getGradeToExecute() << ", signed "
+          << std::boolalpha << form.getSignedForm();
+	return out;
+}
