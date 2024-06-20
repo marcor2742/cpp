@@ -1,7 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm()
-	: AForm("robotomy", 25, 5), target("default target")
+	: AForm("robotomy", 25, 5), target("default target") 
 {
 	srand(time(NULL));
 }
