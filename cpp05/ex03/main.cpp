@@ -24,4 +24,6 @@ int main(void)
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 	robot.signForm(*rrf);
 	robot.executeForm(*rrf);
+
+	delete?
 }
