@@ -17,11 +17,11 @@ int main()
 	Span error(5);
 	std::vector<int> vec2;
 	vec2.push_back(15);
-	vec2.push_back(3);
-	vec2.push_back(1);
+	vec2.push_back(-13);
+	vec2.push_back(-13);
 	vec2.push_back(4);
 	vec2.push_back(3);
-	vec2.push_back(6);
+	vec2.push_back(41);
 	try
 	{
 		error.addNumber(vec2.begin(), vec2.end());
