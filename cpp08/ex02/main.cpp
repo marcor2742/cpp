@@ -13,15 +13,27 @@ int main()
 	mstack.push(737);
 	//[...]
 	mstack.push(0);
+
+	std::cout << std::endl;
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
 	--it;
 	while (it != ite)
 	{
-	std::cout << *it << std::endl;
-	++it;
+		std::cout << *it << std::endl;
+		++it;
 	}
 	std::stack<int> s(mstack);
+
+	std::cout << std::endl;
+	MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+	MutantStack<int>::reverse_iterator rite = mstack.rend();
+	while (rit != rite)
+	{
+		std::cout << *rit << std::endl;
+		++rit;
+	}
+
 	return 0;
 }
