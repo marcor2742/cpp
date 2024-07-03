@@ -33,6 +33,8 @@ void BitcoinExchange::setCsv()
 	std::string linea;
     while (getline(file, linea))
 	{
+		date = linea.substr(0, 10);
+		value = std::stod(linea.substr(11, linea.size() - 11));
         std::cout << linea << std::endl;
     }
 	

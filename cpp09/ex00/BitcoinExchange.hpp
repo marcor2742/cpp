@@ -10,7 +10,7 @@
 class BitcoinExchange
 {
 	private:
-		std::map<int, double> csv;
+		std::map<int, double> csv; //carta geografica
 		int input_date;
 		double input_value;
 		char *file_name;
