@@ -6,13 +6,15 @@
 #include <map>
 #include <algorithm>
 #include <fstream>
+#include <cstdlib>
+#include <iomanip>
 
 class BitcoinExchange
 {
 	private:
-		std::map<int, double> csv; //carta geografica
+		std::map<int, float> csv; //carta geografica
 		int input_date;
-		double input_value;
+		float input_value;
 		char *file_name;
 		BitcoinExchange() {}
 
@@ -25,12 +27,10 @@ class BitcoinExchange
 		void btc(); //main
 
 		void setCsv(); //ifstream di data.csv 
-		/*int toInt(std::string str); //e conversione da string a int e double
-		double toDouble(std::string str);
 
-		bool checkInput(std::string str); // split " | " per richiamare checkDate e checkValue
+		void checkInput(); // split " | " per richiamare checkDate e checkValue
 		bool checkDate(std::string str);
-		bool checkValue(std::string str);*/
+		bool checkValue(std::string str);
 };
 
 #endif
