@@ -26,15 +26,12 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange &copy);
 		BitcoinExchange &operator=(const BitcoinExchange &copy);
 
-		void btc(); //main
+		void btc();
 
-		void setCsv(); //ifstream di data.csv 
+		void setCsv();
 
-		//void checkInput(); // split " | " per richiamare checkDate e checkValue
 		bool checkDate(std::string str);
-		bool checkValue(std::string str);
-
-		void printMoney(/*std::string line*/);
+		void checkValue(std::string str);
 		std::string getClosestDate();
 };
 
