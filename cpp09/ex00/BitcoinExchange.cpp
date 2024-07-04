@@ -16,11 +16,50 @@ void BitcoinExchange::btc()
 {
 	setCsv();
 
-	checkInput();
+	std::ifstream file(file_name);
+	if (!file.is_open())
+	{
+		std::cerr << "Error: cannot open file" << std::endl;
+		return;              //throw
+	}
 
+	std::string line;
+	getline(file, line); // Salta la prima riga
+	while (getline(file, line))
+	{
+		size_t i = line.find(" | ");
+		if (i == std::string::npos)
+			std::cout << "KO ";       //throw scrivi errore 
+		if (!checkDate(line.substr(0, i)))
+			std::cout << "KO ";       //throw
+		if (!checkValue(line.substr(i + 3)))
+			std::cout << "KO " << std::endl;       //throw
 
+		printMoney(line); //parte se non ci sono errori
+	}
 
+	file.close();
+}
 
+std::string BitcoinExchange::getClosestDate()
+{
+	std::map<int, float>::iterator it = csv.lower_bound(input_date);
+	if (it == csv.begin() && it->first > input_date)
+		return "";//
+	if (it == csv.end())
+	{
+		--it;
+	}
+	std::ostringstream oss;
+	oss << it->first;
+	return oss.str();
+}
+
+void BitcoinExchange::printMoney(std::string line)
+{
+	(void)line;
+	std::string output_date = getClosestDate();
+	std::cout << output_date << " | " << input_value << std::endl;
 }
 
 bool BitcoinExchange::checkDate(std::string str)
@@ -89,7 +128,7 @@ bool BitcoinExchange::checkValue(std::string str)
 	return true;
 }
 
-void BitcoinExchange::checkInput()
+/*void BitcoinExchange::checkInput()
 {
 	std::ifstream file(file_name);
 	if (!file.is_open())
@@ -116,7 +155,7 @@ void BitcoinExchange::checkInput()
 	}
 
 	file.close();
-}
+}*/
 
 void BitcoinExchange::setCsv()
 {
@@ -138,12 +177,12 @@ void BitcoinExchange::setCsv()
 		csv.insert(std::pair<int, float>(input_date, input_value));
     }
 	
-	std::map<int, float>::iterator it;
+	/*std::map<int, float>::iterator it;
 	for (it = csv.begin(); it != csv.end(); ++it)
 	{
 		std::cout << std::fixed << std::setprecision(2); // Imposta la precisione a 2 cifre decimali
 		std::cout << "Chiave: " << it->first << ", Valore: " << it->second << std::endl;
-	}
+	}*/
 	
 	file.close();
 }

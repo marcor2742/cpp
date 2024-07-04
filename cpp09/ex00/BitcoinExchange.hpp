@@ -8,6 +8,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <iomanip>
+#include <sstream>
 
 class BitcoinExchange
 {
@@ -28,9 +29,12 @@ class BitcoinExchange
 
 		void setCsv(); //ifstream di data.csv 
 
-		void checkInput(); // split " | " per richiamare checkDate e checkValue
+		//void checkInput(); // split " | " per richiamare checkDate e checkValue
 		bool checkDate(std::string str);
 		bool checkValue(std::string str);
+
+		void printMoney(std::string line);
+		std::string getClosestDate();
 };
 
 #endif
