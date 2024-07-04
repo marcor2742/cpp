@@ -37,7 +37,7 @@ void BitcoinExchange::btc()
 			}
 			if (i == std::string::npos)
 				throw std::invalid_argument("Error: missing |.");
-			checkValue(line.substr(13));
+			checkValue(line.substr(i + 3));
 
 			std::string output_date = getClosestDate();
 			std::cout << line.substr(0, i) << " => " << input_value << " = " << output_value;
