@@ -29,13 +29,13 @@ void BitcoinExchange::btc()
 	{
 		size_t i = line.find(" | ");
 		if (i == std::string::npos)
-			std::cout << "KO ";       //throw scrivi errore 
-		if (!checkDate(line.substr(0, i)))
-			std::cout << "KO ";       //throw
-		if (!checkValue(line.substr(i + 3)))
+			std::cout << "KO " << std::endl;       //throw scrivi errore 
+		else if (!checkDate(line.substr(0, i)))
 			std::cout << "KO " << std::endl;       //throw
-
-		printMoney(line); //parte se non ci sono errori
+		else if (!checkValue(line.substr(i + 3)))
+			std::cout << "KO " << std::endl;       //throw
+		else
+			printMoney(/*line*/); //parte se non ci sono errori
 	}
 
 	file.close();
@@ -44,22 +44,33 @@ void BitcoinExchange::btc()
 std::string BitcoinExchange::getClosestDate()
 {
 	std::map<int, float>::iterator it = csv.lower_bound(input_date);
-	if (it == csv.begin() && it->first > input_date)
+	//se il valore trovato e' uguale a quello cercato c++98
+	std::cout << it->first << " " << input_date << std::endl;
+	std::cout << csv[it->first] << " " << input_value << std::endl;
+	return "ciao";
+
+	/*if (it == csv.begin() && it->first > input_date)
 		return "";//
 	if (it == csv.end())
 	{
 		--it;
 	}
+
 	std::ostringstream oss;
-	oss << it->first;
-	return oss.str();
+	oss << (--it)->first;
+
+	std::cout << csv[it->first] << " " << input_value << std::endl;
+	output_value = csv[it->first] * input_value;
+
+	return oss.str().insert(4, "-").insert(7, "-");*/
 }
 
-void BitcoinExchange::printMoney(std::string line)
+void BitcoinExchange::printMoney(/*std::string line*/)
 {
-	(void)line;
+	//(void)line;
 	std::string output_date = getClosestDate();
-	std::cout << output_date << " | " << input_value << std::endl;
+	std::cout << output_date << " => " << input_value << " = " << output_value << std::endl;
+
 }
 
 bool BitcoinExchange::checkDate(std::string str)

@@ -16,6 +16,7 @@ class BitcoinExchange
 		std::map<int, float> csv; //carta geografica
 		int input_date;
 		float input_value;
+		float output_value;
 		char *file_name;
 		BitcoinExchange() {}
 
@@ -33,7 +34,7 @@ class BitcoinExchange
 		bool checkDate(std::string str);
 		bool checkValue(std::string str);
 
-		void printMoney(std::string line);
+		void printMoney(/*std::string line*/);
 		std::string getClosestDate();
 };
 
