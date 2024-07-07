@@ -2,10 +2,11 @@
 
 void	PmergeMe::pmerge(char **argv)
 {
+
 	try
 	{
 		parse(argv);
-		sort();
+		mergeInsertion_sort();
 	}
 	catch(const std::exception& e)
 	{
@@ -43,9 +44,10 @@ void	PmergeMe::parse(char **argv)
 	std::cout << std::endl << "Vector: ";
 	for (std::vector<int>::iterator it = m_vector.begin(); it != m_vector.end(); it++)
 		std::cout << *it << " ";
+	std::cout << std::endl;
 }
 
-void	PmergeMe::sort()
+void	PmergeMe::mergeInsertion_sort()
 {
-	
+
 }

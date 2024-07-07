@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <climits>
 #include <cerrno>
+#include <utility>
 //#include <sstream>
 //#include <cstdlib>
 
@@ -25,7 +26,7 @@ class PmergeMe
 
 		void	pmerge(char **argv);
 		void	parse(char **argv);
-		void	sort();
+		void	mergeInsertion_sort();
 };
 
 #endif
