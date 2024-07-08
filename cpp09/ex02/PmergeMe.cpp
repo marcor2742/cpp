@@ -6,7 +6,6 @@ void	PmergeMe::pmerge(char **argv)
 	try
 	{
 		parse(argv);
-		mergeInsertion_sort();
 	}
 	catch(const std::exception& e)
 	{
@@ -15,10 +14,14 @@ void	PmergeMe::pmerge(char **argv)
 	
 }
 
+bool flag = false;
+unsigned int tmp;
+
 void	PmergeMe::parse(char **argv)
 {
 	char *endptr;
     errno = 0;
+
     for (int i = 1; argv[i]; i++)
     {
         long val = std::strtol(argv[i], &endptr, 10);
@@ -32,11 +35,9 @@ void	PmergeMe::parse(char **argv)
 			throw std::invalid_argument("Error: invalid argument");
 		}
 
-        
-        m_list.push_back(static_cast<int>(val));
+        m_deque.push_back(static_cast<int>(val));
         m_vector.push_back(static_cast<int>(val));
     }
-
 	std::cout << "List: ";
 	for (std::list<int>::iterator it = m_list.begin(); it != m_list.end(); it++)
 		std::cout << *it << " ";
@@ -45,131 +46,85 @@ void	PmergeMe::parse(char **argv)
 	for (std::vector<int>::iterator it = m_vector.begin(); it != m_vector.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
-}
 
-void mergeVector(std::vector<int> &result, unsigned int startLeft, unsigned int middle, unsigned int endRight)
-{
-	std::vector<int> vecLeft(result.begin() + startLeft, result.begin() + middle + 1);
-	std::vector<int> vecRight(result.begin() + middle + 1, result.begin() + endRight + 1);
-
-	unsigned int iLeft = 0;
-	unsigned int iRight = 0;
-	unsigned int index = startLeft;
-	while (iLeft < vecLeft.size() && iRight < vecRight.size())
+	//fill vector pair with m_vector values. if odd, tmp = last value and flag = true
+	std::vector<std::pair<unsigned int, unsigned int> > vec;
+	for (size_t i = 0; i < m_vector.size(); i += 2)
 	{
-		if (vecLeft[iLeft] <= vecRight[iRight])
-			result[index++] = vecLeft[iLeft++];
+		if (i + 1 < m_vector.size())
+			vec.push_back(std::make_pair(m_vector[i], m_vector[i + 1]));
 		else
-			result[index++] = vecRight[iRight++];
+		{
+			tmp = m_vector[i];
+			flag = true;
+		}
 	}
 
-	while (iLeft < vecLeft.size())
-		result[index++] = vecLeft[iLeft++];
 
-	while (iRight < vecRight.size())
-		result[index++] = vecRight[iRight++];
-}
+	std::vector<unsigned int> vec_a, vec_b;
 
-void mergeSort(std::vector<int> &vec, unsigned int left, unsigned int right)
-{
-	if (left < right)
+	mergeInsertion_sort(vec, vec_a, vec_b, 'v');
+
+
+
+	//fill list pair with m_vector values. if odd, tmp = last value and flag = true
+	std::deque<std::pair<unsigned int, unsigned int> > dec;
+	for (size_t i = 0; i < m_deque.size(); i += 2)
 	{
-		unsigned int middle = left + (right - left) / 2;
-		mergeSort(vec, left, middle);
-		mergeSort(vec, middle + 1, right);
-		mergeVector(vec, left, middle, right);
+		if (i + 1 < m_deque.size())
+			dec.push_back(std::make_pair(m_deque[i], m_deque[i + 1]));
+		else
+		{
+			tmp = m_deque[i];
+			flag = true;
+		}
 	}
+
+	std::deque<unsigned int> dec_a, dec_b;
+    mergeInsertion_sort(dec, dec_a, dec_b, 'd');
+
 }
 
-std::list<int> mergeList(std::list<int>::iterator startLeft, std::list<int>::iterator middle, std::list<int>::iterator endRight)
-{
-    std::list<int> result;
-    std::list<int>::iterator left = startLeft;
-    std::list<int>::iterator right = middle;
 
-    while (left != middle && right != endRight)
+template <typename T, typename S, typename V>
+
+void    PmergeMe::mergeInsertion_sort(T &container, S &cont, V &conta, char choice)
+{
+    //              Time
+    struct timeval start, end;
+    long sec, micro;
+
+    gettimeofday(&start, NULL);
+    for (size_t i = 0; i < container.size(); i++)
     {
-        if (*left < *right)
-        {
-            result.push_back(*left);
-            ++left;
-        }
-        else
-        {
-            result.push_back(*right);
-            ++right;
-        }
+        if (container[i].first > container[i].second)
+            std::swap(container[i].first, container[i].second);
     }
 
-    while (left != middle)
-    {
-        result.push_back(*left);
-        ++left;
-    }
+    for (size_t i = 0; i < container.size(); i++)
+        conta.push_back(container[i].first);
 
-    while (right != endRight)
-    {
-        result.push_back(*right);
-        ++right;
-    }
+    for (size_t i = 0; i < container.size(); i++)
+        cont.push_back(container[i].second);
 
-    return result;
-}
+    std::sort(conta.begin(), conta.end());
 
-void mergesort(std::list<int> &list, std::list<int>::iterator start, std::list<int>::iterator end)
-{
-	if (std::distance(start, end) > 1)
-	{
-		std::list<int>::iterator middle = start;
-		std::advance(middle, std::distance(start, end) / 2);
-		mergesort(list, start, middle);
-		mergesort(list, middle, end);
-		std::list<int> result = mergeList(start, middle, end);
-		std::copy(result.begin(), result.end(), start);
-	}
-}
+    for (size_t i = 0; i < cont.size(); i++)
+        conta.insert(std::lower_bound(conta.begin(), conta.end(), cont[i]), cont[i]);
+    if (flag)
+        conta.insert(std::lower_bound(conta.begin(), conta.end(), tmp), tmp);
 
-void	PmergeMe::mergeInsertion_sort()
-{
-	bool OddOne = false;
-	int OddOne_value;
-	if (m_vector.size() % 2 != 0)
-	{
-		OddOne = true;
-		OddOne_value = m_list.back();
-		m_list.pop_back();
-		m_vector.pop_back();
-	}
+    std::cout << "\nAfter  : "; 
 
-	clock_t start = clock();
-	mergesort(m_list, m_list.begin(), m_list.end());
-	if (OddOne == true)
-	{
-		// For std::list
-		std::list<int>::iterator positionList = std::lower_bound(m_list.begin(), m_list.end(), OddOne_value);
-		m_list.insert(positionList, OddOne_value);
-	}
-	clock_t end_l = clock();
+    for (size_t i = 0; i < conta.size(); i++)
+        std::cout << conta[i] << " ";
 
-
-
-	clock_t start_v = clock();
-	mergeSort(m_vector, 0, m_vector.size() - 1);
-	if (OddOne == true)
-	{
-		std::vector<int>::iterator positionVector = std::lower_bound(m_vector.begin(), m_vector.end(), OddOne_value);
-		m_vector.insert(positionVector, OddOne_value);
-	}
-	clock_t end_v = clock();
-
-
-	
-	std::cout << "Sorted: ";
-	for (size_t i = 0; i < m_vector.size(); i++)
-	{
-		std::cout << m_vector[i] << " ";
-	}
-	std::cout << std::endl;
-	std::cout << "List Time: " << (double)(end_l - start) / CLOCKS_PER_SEC * 1000000 << "us" << std::endl;
-	std::cout << "Vector Time: " << (double)(end_v - start_v) / CLOCKS_PER_SEC * 1000000 << "us" << std::endl;
+    gettimeofday(&end, NULL);
+    sec = end.tv_sec - start.tv_sec;
+    micro = end.tv_usec - start.tv_usec;
+    long diff = (sec / 1000000) + (micro);
+    if (choice == 'v')
+        std::cout << "\nTime to process vector : " << diff  << " us" << "\n";
+    if (choice == 'd')
+        std::cout << "\nTime to process deque : " << diff  << " us" << "\n";
 }

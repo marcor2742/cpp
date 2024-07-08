@@ -8,6 +8,8 @@
 #include <climits>
 #include <cerrno>
 #include <utility>
+#include <sys/time.h>
+#include <deque>
 //#include <sstream>
 //#include <cstdlib>
 
@@ -15,6 +17,7 @@ class PmergeMe
 {
 	private:
 		std::list<int> m_list;
+		std::deque<int> m_deque;
 		std::vector<int> m_vector;
 
 	public:
@@ -26,7 +29,8 @@ class PmergeMe
 
 		void	pmerge(char **argv);
 		void	parse(char **argv);
-		void	mergeInsertion_sort();
+		template <typename T, typename S, typename V>
+		void	mergeInsertion_sort(T &container, S &cont, V &conta, char choice);
 };
 
 #endif
