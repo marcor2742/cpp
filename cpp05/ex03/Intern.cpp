@@ -14,6 +14,10 @@ Intern& Intern::operator=(const Intern&)
 AForm *Intern::makeForm(std::string form_name, std::string target)
 {
 	std::string forms[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
+	AForm	*Form[3];
+	Form[0] = new PresidentialPardonForm(target);
+	Form[1] = new RobotomyRequestForm(target);
+	Form[2] = new ShrubberyCreationForm(target);
 
 	try
 	{
@@ -21,15 +25,12 @@ AForm *Intern::makeForm(std::string form_name, std::string target)
 		{
 			if (form_name == forms[i])
 			{
-				switch (i)
+				for (int idx = 0 ; idx < 3 ; idx++)
 				{
-					case 0:
-						return new PresidentialPardonForm(target);
-					case 1:
-						return new RobotomyRequestForm(target);
-					case 2:
-						return new ShrubberyCreationForm(target);
+					if (idx != i)
+						delete Form[idx];
 				}
+				return Form[i];
 			}
 		}
 		throw WrongFormName();

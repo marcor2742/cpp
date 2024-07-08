@@ -16,17 +16,21 @@ int main(void)
 {
 	std::cout << GREEN "||||||BUREAUCRAT INSTATIATE TESTS||||||\n" RESET << std::endl;
 
-	try {
-		std::cout << BLUE "Trying to create a bureaucrat with a grade of 0:" RESET << std::endl;
+	try
+	{
 		Bureaucrat tooHigh("TooHigh", 0);
-	} catch (std::exception &e) {
+	}
+	catch (std::exception &e)
+	{
 		std::cerr << RED "Exception: " RESET << e.what() << RESET << std::endl;
 	}
 
-	try {
-		std::cout << BLUE "Trying to create a bureaucrat with a grade of 151:" RESET << std::endl;
+	try
+	{
 		Bureaucrat tooLow("TooLow", 151);
-	} catch (std::exception &e) {
+	}
+	catch (std::exception &e)
+	{
 		std::cerr << RED "Exception: " << RESET << e.what() << std::endl;
 	}
 
@@ -35,29 +39,31 @@ int main(void)
 
 	std::cout << GREEN "\n||||||BUREAUCRAT TESTS||||||\n" RESET << std::endl;
 
-	try {
+	try
+	{
 		std::cout << BLUE "-----Before Decrement-----" RESET << std::endl;
-		std::cout << "Bureaucrat name:" << bureaucrat_0.getName() << std::endl;
-		std::cout << "Bureaucrat grade:" GREEN << bureaucrat_0.getGrade() << std::endl;
+		std::cout << bureaucrat_0;
 
 		std::cout << BLUE "-----After Decrement-----" RESET << std::endl;
 		bureaucrat_0.decrementGrade();
-		std::cout << "Bureaucrat name:" << bureaucrat_0.getName() << std::endl;
-		std::cout << "Bureaucrat grade:" GREEN << bureaucrat_0.getGrade() << std::endl;
-	} catch (std::exception &e) {
+		std::cout << bureaucrat_0;
+	}
+	catch (std::exception &e)
+	{
 		std::cerr << RED "Exception: " << e.what() << RESET << std::endl;
 	}
 
-	try {
+	try
+	{
 		std::cout << BLUE "-----Before Increment-----" RESET << std::endl;
-		std::cout << "Bureaucrat name:" << bureaucrat_1.getName() << std::endl;
-		std::cout << "Bureaucrat grade:" GREEN << bureaucrat_1.getGrade() << std::endl;
+		std::cout << bureaucrat_1;
 
 		std::cout << BLUE "-----After Increment-----" RESET << std::endl;
 		bureaucrat_1.incrementGrade();
-		std::cout << "Bureaucrat name:" << bureaucrat_1.getName() << std::endl;
-		std::cout << "Bureaucrat grade:" GREEN << bureaucrat_1.getGrade() << std::endl;
-	} catch (std::exception &e) {
+		std::cout << bureaucrat_1;
+	}
+	catch (std::exception &e)
+	{
 		std::cerr << RED "Exception: " << e.what() << RESET << std::endl;
 	}
 

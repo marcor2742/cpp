@@ -25,5 +25,5 @@ int main(void)
 	robot.signForm(*rrf);
 	robot.executeForm(*rrf);
 
-	delete?
+	delete rrf;
 }

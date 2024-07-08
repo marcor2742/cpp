@@ -26,7 +26,7 @@ int main()
 			std::cerr << e.what() << "\n" << std::endl;
 			break;
 		}
-		std::cout << i << " ";
+		std::cout << luca.getGrade() << " ";
 	}
 	Bureaucrat reno(mary);
 	std::cout << reno;
@@ -41,7 +41,7 @@ int main()
 			std::cerr << e.what() << "\n" <<std::endl;
 			break;
 		}
-		std::cout << i << " ";
+		std::cout << reno.getGrade() << " ";
 	}
 
 	Bureaucrat lisa;
