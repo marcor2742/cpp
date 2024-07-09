@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Identify.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/09 15:42:25 by mruggier          #+#    #+#             */
+/*   Updated: 2024/07/09 15:42:26 by mruggier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Identify.hpp"
 
 Base	*generate(void) 
@@ -26,6 +38,8 @@ void identify_from_pointer(Base *p) {
 		std::cout << "B\n";
     else if (dynamic_cast<C*>(p))
 		std::cout << "C\n";
+	else
+		std::cout << "bad_cast";
 }
 
 void identify_from_reference(Base &p) {
