@@ -1,14 +1,14 @@
 #ifndef ITER_HPP
 #define ITER_HPP
 
-template<typename T>
-void add2(T value)
+template<typename F>
+void add2(F& value)
 {
 	value += 2;
 }
 
-template<typename T>
-void iter(T *addr, int len, void (*func)(T&))
+template<typename T, typename F>
+void iter(T *addr, int len, void (*func)(F&))
 {
 	for (int i = 0; i < len; i++)
 		func(addr[i]);
