@@ -2,6 +2,28 @@
 #include "Array.hpp"
 #include <cstdlib>
 
+int main(int, char**)
+{
+	Array<float> numbers(10);
+
+	Array<float> test;
+	test = numbers;
+
+	for (float i = 0; i < 10; i++)
+	{
+		numbers[i] = i / 2;
+	}
+	for (float i = 0; i < 10; i++)
+	{
+		std::cout << numbers[i] << std::endl;
+	}
+
+	std::cout << numbers.size() << std::endl;
+
+	return 0;
+}
+
+/*
 #define MAX_VAL 750
 int main(int, char**)
 {
@@ -52,3 +74,4 @@ int main(int, char**)
     delete [] mirror;
     return 0;
 }
+*/

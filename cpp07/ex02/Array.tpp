@@ -17,13 +17,13 @@ Array<T>::Array(const Array& other)
 template<typename T>
 Array<T>::~Array()
 {
-	//delete [] array;
+	delete [] array;
 }
 
 template<typename T>
 Array<T>& Array<T>::operator=(const Array& other)
 {
-	if (this == &other)
+	if (this != &other)
 	{
 		n = other.n;
 		array = new T[n];
