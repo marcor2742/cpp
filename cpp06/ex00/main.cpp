@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: mruggier <mruggier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:41:43 by mruggier          #+#    #+#             */
-/*   Updated: 2024/07/09 15:41:44 by mruggier         ###   ########.fr       */
+/*   Updated: 2024/07/11 17:51:37 by mruggier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,10 @@ int main(int argc, char **argv)
 	}
 
 	std::string literal = argv[1];
+	if (literal.empty())
+	{
+		std::cerr << "empty argument" << std::endl;
+		return 1;
+	}
 	ScalarConverter::convert(literal);
 }
