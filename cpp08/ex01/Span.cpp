@@ -1,4 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mruggier <mruggier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/12 15:24:13 by mruggier          #+#    #+#             */
+/*   Updated: 2024/07/12 15:24:14 by mruggier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Span.hpp"
+
+Span::Span() {};
+Span::Span(unsigned int N) : N(N) {};
+Span::~Span() {};
+Span::Span(const Span &other) : N(other.N) {};
+Span& Span::operator=(const Span &other) { N = other.N; return *this; };
 
 void Span::addNumber(int n)
 {

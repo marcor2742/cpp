@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mruggier <mruggier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/12 15:24:16 by mruggier          #+#    #+#             */
+/*   Updated: 2024/07/12 15:24:17 by mruggier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
@@ -5,20 +17,20 @@
 #include <algorithm>
 #include <iostream>
 #include <climits>
-#include <cstdlib> // Per rand() e srand()
-#include <ctime>   // Per time()
+#include <cstdlib>
+#include <ctime>
 
 class Span
 {
 private:
 	std::vector<int> vec;
 	unsigned int N;
-	Span() {};
+	Span();
 public:
-	Span(unsigned int N) : N(N) {};
-	~Span() {};
-	Span(const Span &other) : N(other.N) {};
-	Span &operator=(const Span &other) { N = other.N; return *this; };
+	Span(unsigned int N);
+	~Span();
+	Span(const Span &other);
+	Span &operator=(const Span &other);
 
 	void addNumber(int n);
 	void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
