@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverer.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: mruggier <mruggier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:41:47 by mruggier          #+#    #+#             */
-/*   Updated: 2024/07/09 15:41:48 by mruggier         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:17:14 by mruggier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 class ScalarConverter
 {
 private:
-	ScalarConverter() {}
-	ScalarConverter(const ScalarConverter& other) { *this = other; }
-	ScalarConverter& operator=(const ScalarConverter& other) { (void)other; return *this; }
+	ScalarConverter();
+	ScalarConverter(const ScalarConverter& other);
+	ScalarConverter& operator=(const ScalarConverter& other);
 	static std::string checkCharString(std::string &str);
     static bool checkPseudoLiteral(std::string &str);
     static void convertChar(std::string &str, int &c, std::stringstream &ss, std::string &literal);
@@ -33,7 +33,7 @@ private:
     static void convertDouble(double &d, std::stringstream &ss, std::string &literal, bool *isinf);
 
 public:
-	~ScalarConverter() {}
+	~ScalarConverter();
 	static void convert(std::string &literal);
 
 	class NotDisplayable : public std::exception

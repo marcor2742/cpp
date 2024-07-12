@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: mruggier <mruggier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:41:51 by mruggier          #+#    #+#             */
-/*   Updated: 2024/07/09 15:41:52 by mruggier         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:17:23 by mruggier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverer.hpp"
 
+	ScalarConverter::ScalarConverter() {}
+	ScalarConverter::ScalarConverter(const ScalarConverter& other) { *this = other; }
+	ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) { (void)other; return *this; }
+	ScalarConverter::~ScalarConverter() {}
+	
 	std::string ScalarConverter::checkCharString(std::string &str)
 	{
 		double d;

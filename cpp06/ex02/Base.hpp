@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: mruggier <mruggier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:42:18 by mruggier          #+#    #+#             */
-/*   Updated: 2024/07/09 15:42:19 by mruggier         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:24:03 by mruggier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Base
 {
 public:
-	virtual ~Base() {}
+	virtual ~Base();
 };
 
 #endif

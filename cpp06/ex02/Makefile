@@ -1,7 +1,8 @@
 NAME = Identify
 
 SRC =	main.cpp \
-		Identify.cpp
+		Identify.cpp \
+		Base.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

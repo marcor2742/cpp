@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: mruggier <mruggier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:42:08 by mruggier          #+#    #+#             */
-/*   Updated: 2024/07/09 15:42:09 by mruggier         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:18:45 by mruggier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ struct Data
 class Serializer
 {
 private:
-	Serializer() {}
-	Serializer(const Serializer& other) { *this = other; }
-	Serializer& operator=(const Serializer& other) { (void)other; return *this; }
+	Serializer();
+	Serializer(const Serializer& other);
+	Serializer& operator=(const Serializer& other);
 
 public:
-	~Serializer() {}
+	~Serializer();
 	static uintptr_t serialize(Data* ptr);
 	static Data* deserialize(uintptr_t raw);
 };
