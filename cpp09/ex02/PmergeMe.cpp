@@ -2,20 +2,46 @@
 
 void	PmergeMe::pmerge(char **argv)
 {
-
 	try
 	{
+	    clock_t start, end;
+		double Vus, Dus;
+
 		parse(argv);
+
+		std::cout <<BLUE "Before sorting:" RESET<< std::endl;
+		printCont(m_deque);
+		printCont(m_vector);
+
+		start = clock();
+			merge_sort(m_vector, 0, m_vector.size() - 1);
+		end = clock();
+		Vus = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
+		start = clock();
+			merge_sort(m_deque, 0, m_deque.size() - 1);
+		end = clock();
+		Dus = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
+
+		std::cout <<BLUE "After sorting:" RESET<< std::endl;
+		printCont(m_deque);
+		printCont(m_vector);
+
+		std::cout << "Vector time: " << Vus << "us" << std::endl;
+		std::cout << "Deque time: " << Dus << "us" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
 }
 
-bool flag = false;
-unsigned int tmp;
+template< typename T >
+void	PmergeMe::printCont(T & cont)
+{
+	for (typename T::iterator it = cont.begin(); it != cont.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
 
 void	PmergeMe::parse(char **argv)
 {
@@ -38,93 +64,36 @@ void	PmergeMe::parse(char **argv)
         m_deque.push_back(static_cast<int>(val));
         m_vector.push_back(static_cast<int>(val));
     }
-	std::cout << "List: ";
-	for (std::list<int>::iterator it = m_list.begin(); it != m_list.end(); it++)
-		std::cout << *it << " ";
-
-	std::cout << std::endl << "Vector: ";
-	for (std::vector<int>::iterator it = m_vector.begin(); it != m_vector.end(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
-
-	//fill vector pair with m_vector values. if odd, tmp = last value and flag = true
-	std::vector<std::pair<unsigned int, unsigned int> > vec;
-	for (size_t i = 0; i < m_vector.size(); i += 2)
-	{
-		if (i + 1 < m_vector.size())
-			vec.push_back(std::make_pair(m_vector[i], m_vector[i + 1]));
-		else
-		{
-			tmp = m_vector[i];
-			flag = true;
-		}
-	}
-
-
-	std::vector<unsigned int> vec_a, vec_b;
-
-	mergeInsertion_sort(vec, vec_a, vec_b, 'v');
-
-
-
-	//fill list pair with m_vector values. if odd, tmp = last value and flag = true
-	std::deque<std::pair<unsigned int, unsigned int> > dec;
-	for (size_t i = 0; i < m_deque.size(); i += 2)
-	{
-		if (i + 1 < m_deque.size())
-			dec.push_back(std::make_pair(m_deque[i], m_deque[i + 1]));
-		else
-		{
-			tmp = m_deque[i];
-			flag = true;
-		}
-	}
-
-	std::deque<unsigned int> dec_a, dec_b;
-    mergeInsertion_sort(dec, dec_a, dec_b, 'd');
-
 }
 
-
-template <typename T, typename S, typename V>
-
-void    PmergeMe::mergeInsertion_sort(T &container, S &cont, V &conta, char choice)
+template< typename T >
+void	PmergeMe::merge_sort(T & cont, int begin, int end)
 {
-    //              Time
-    struct timeval start, end;
-    long sec, micro;
+	int middle;
+	if (begin < end)  
+	{
+		middle = (begin + end) / 2;  
+		merge_sort(cont, begin, middle);  
+		merge_sort(cont, middle + 1, end);  
 
-    gettimeofday(&start, NULL);
-    for (size_t i = 0; i < container.size(); i++)
-    {
-        if (container[i].first > container[i].second)
-            std::swap(container[i].first, container[i].second);
-    }
+		std::vector<int> tmp(end - begin + 1);
+		int b = begin;
+		int m = middle + 1;
+		int i = 0;
 
-    for (size_t i = 0; i < container.size(); i++)
-        conta.push_back(container[i].first);
+		while (b <= middle && m <= end)
+		{
+			if (cont[b] <= cont[m])
+				tmp[i++] = cont[b++];
+			else
+				tmp[i++] = cont[m++];
+		}
+		while (b <= middle)
+			tmp[i++] = cont[b++];
+		while (m <= end)
+			tmp[i++] = cont[m++];
 
-    for (size_t i = 0; i < container.size(); i++)
-        cont.push_back(container[i].second);
-
-    std::sort(conta.begin(), conta.end());
-
-    for (size_t i = 0; i < cont.size(); i++)
-        conta.insert(std::lower_bound(conta.begin(), conta.end(), cont[i]), cont[i]);
-    if (flag)
-        conta.insert(std::lower_bound(conta.begin(), conta.end(), tmp), tmp);
-
-    std::cout << "\nAfter  : "; 
-
-    for (size_t i = 0; i < conta.size(); i++)
-        std::cout << conta[i] << " ";
-
-    gettimeofday(&end, NULL);
-    sec = end.tv_sec - start.tv_sec;
-    micro = end.tv_usec - start.tv_usec;
-    long diff = (sec / 1000000) + (micro);
-    if (choice == 'v')
-        std::cout << "\nTime to process vector : " << diff  << " us" << "\n";
-    if (choice == 'd')
-        std::cout << "\nTime to process deque : " << diff  << " us" << "\n";
+		for (int it = 0; it < i; it++)
+			cont[begin + it] = tmp[it];
+	}
 }
