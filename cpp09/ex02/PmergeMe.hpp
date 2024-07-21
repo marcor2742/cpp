@@ -2,14 +2,13 @@
 #define PMERGEME_HPP
 
 #include <iostream>
-//#include <list>
-#include <vector>
 #include <algorithm>
+#include <vector>
+#include <deque>
 #include <climits>
 #include <cerrno>
 #include <utility>
 #include <sys/time.h>
-#include <deque>
 //#include <sstream>
 //#include <cstdlib>
 
@@ -21,6 +20,7 @@ class PmergeMe
 	private:
 		std::deque<int> m_deque;
 		std::vector<int> m_vector;
+		int m_threshold;
 
 	public:
 		PmergeMe() {};
@@ -33,6 +33,8 @@ class PmergeMe
 		void	parse(char **argv);
 		template< typename T >
 		void	merge_sort(T & lst, int beg, int end);
+		template< typename T >
+		void	insertion_sort(T &cont, int begin, int end);
 		template< typename T >
 		void	printCont(T & lst);
 };

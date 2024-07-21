@@ -12,6 +12,7 @@ void	PmergeMe::pmerge(char **argv)
 		std::cout <<BLUE "Before sorting:" RESET<< std::endl;
 		printCont(m_deque);
 		printCont(m_vector);
+		m_threshold = m_deque.size() * 0.1;
 
 		start = clock();
 			merge_sort(m_vector, 0, m_vector.size() - 1);
@@ -66,34 +67,52 @@ void	PmergeMe::parse(char **argv)
     }
 }
 
-template< typename T >
-void	PmergeMe::merge_sort(T & cont, int begin, int end)
+template<typename T>
+void PmergeMe::insertion_sort(T &cont, int begin, int end)
 {
-	int middle;
-	if (begin < end)  
+	for (int i = begin + 1; i <= end; i++) 
 	{
-		middle = (begin + end) / 2;  
-		merge_sort(cont, begin, middle);  
-		merge_sort(cont, middle + 1, end);  
-
-		std::vector<int> tmp(end - begin + 1);
-		int b = begin;
-		int m = middle + 1;
-		int i = 0;
-
-		while (b <= middle && m <= end)
+		int key = cont[i];
+		int j = i - 1;
+		while (j >= begin && cont[j] > key)
 		{
-			if (cont[b] <= cont[m])
-				tmp[i++] = cont[b++];
-			else
-				tmp[i++] = cont[m++];
+			cont[j + 1] = cont[j];
+			j = j - 1;
 		}
-		while (b <= middle)
-			tmp[i++] = cont[b++];
-		while (m <= end)
-			tmp[i++] = cont[m++];
+		cont[j + 1] = key;
+	}
+}
 
-		for (int it = 0; it < i; it++)
-			cont[begin + it] = tmp[it];
+template<typename T>
+void PmergeMe::merge_sort(T &cont, int begin, int end)
+{
+	if (begin < end)
+	{
+		if (end - begin <= m_threshold)
+			insertion_sort(cont, begin, end);
+		else
+		{
+			int middle = (begin + end) / 2;
+			merge_sort(cont, begin, middle);
+			merge_sort(cont, middle + 1, end);
+
+			std::vector<int> tmp(end - begin + 1);
+			int b = begin, m = middle + 1, i = 0;
+
+			while (b <= middle && m <= end)
+			{
+				if (cont[b] <= cont[m])
+					tmp[i++] = cont[b++];
+				else
+					tmp[i++] = cont[m++];
+			}
+			while (b <= middle)
+				tmp[i++] = cont[b++];
+			while (m <= end)
+				tmp[i++] = cont[m++];
+
+			for (int it = 0; it < i; it++) 
+				cont[begin + it] = tmp[it];
+		}
 	}
 }
