@@ -1,4 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/21 19:22:13 by mruggier          #+#    #+#             */
+/*   Updated: 2024/07/21 19:22:14 by mruggier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RPN.hpp"
+
+RPN::RPN() {}
+RPN::~RPN() {}
+RPN::RPN(const RPN& rpn) { *this = rpn; }
+RPN& RPN::operator=(const RPN& rpn) { if (this != &rpn) m_input = rpn.m_input; return *this; }
 
 void RPN::Calculate(std::string str)
 {
@@ -63,7 +80,6 @@ void RPN::doOperations()
 				check++;
 			}
 		}
-
 		it++;
 	}
 	if (m_stack.size() != 1)
@@ -83,7 +99,7 @@ void RPN::parse()
 		
 		if ((*it == ' ' && (*(it + 1) == ' ' || it + 1 == m_input.end() || it == m_input.begin()))
 			|| (*it >= '0' && *it <= '9' && (*(it + 1) != ' ' || it + 1 == m_input.end()))
-			|| (*it != ' ' && *it < '0' && *it > '9' && *(it + 1) == ' ')) // manca il controllo se i primi 2 argomenti non sono numeri
+			|| (*it != ' ' && *it < '0' && *it > '9' && *(it + 1) == ' '))
 			throw std::invalid_argument("Error: invalid character in input");
 
 		if (*it == '+' || *it == '-' || *it == '*' || *it == '/')

@@ -1,11 +1,22 @@
-//La map in C++ mantiene automaticamente le chiavi in ordine crescente, quindi trovare la data più vicina diventa una questione di utilizzare le funzioni di ricerca fornite dalla libreria standard, come lower_bound o upper_bound, per trovare l'elemento più vicino alla data di interesse.
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/21 19:21:55 by mruggier          #+#    #+#             */
+/*   Updated: 2024/07/21 19:21:56 by mruggier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "BitcoinExchange.hpp"
 
 int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cerr << "Usage: ./bitcoin [data.csv]" << std::endl;
+		std::cerr << "Usage: ./bitcoin [data.txt]" << std::endl;
 		return 1;
 	}
 	BitcoinExchange exchange(argv[1]);

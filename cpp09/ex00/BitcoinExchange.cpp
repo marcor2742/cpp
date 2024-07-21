@@ -1,16 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/21 19:21:18 by mruggier          #+#    #+#             */
+/*   Updated: 2024/07/21 19:21:19 by mruggier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
-{
-	csv = copy.csv;
-}
-
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy)
-{
-	if (this != &copy)
-		csv = copy.csv;
-	return *this;
-}
+BitcoinExchange::BitcoinExchange() {}
+BitcoinExchange::BitcoinExchange(char *str) : file_name(str) {}
+BitcoinExchange::~BitcoinExchange() {}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) { csv = copy.csv; }
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) { if (this != &copy) csv = copy.csv; return *this; }
 
 void BitcoinExchange::btc()
 {
@@ -20,7 +26,7 @@ void BitcoinExchange::btc()
 	if (!file.is_open())
 	{
 		std::cerr << "Error: cannot open file" << std::endl;
-		return;              //throw
+		return;
 	}
 
 	std::string line;
@@ -59,7 +65,7 @@ void BitcoinExchange::setCsv()
 	if (!file.is_open())
 	{
 		std::cerr << "Error: cannot open file" << std::endl;
-		return;             //throw
+		return;
 	}
 
 	std::string linea;

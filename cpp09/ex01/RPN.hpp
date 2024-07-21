@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/21 19:22:21 by mruggier          #+#    #+#             */
+/*   Updated: 2024/07/21 19:22:22 by mruggier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RPN_HPP
 #define RPN_HPP
 
@@ -16,10 +28,10 @@ private:
 	std::stack<int> m_stack;
 
 public:
-	RPN() {}
-	~RPN() {}
-	RPN(const RPN& rpn) { (void)rpn; }
-	RPN& operator=(const RPN& rpn) { (void)rpn; return *this; }
+	RPN();
+	~RPN();
+	RPN(const RPN& rpn);
+	RPN& operator=(const RPN& rpn);
 
 	void Calculate(std::string str);
 	void parse();

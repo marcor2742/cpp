@@ -1,4 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/21 19:22:36 by mruggier          #+#    #+#             */
+/*   Updated: 2024/07/21 19:22:37 by mruggier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PmergeMe.hpp"
+
+PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe(PmergeMe const& copy) { *this = copy; }
+PmergeMe::~PmergeMe() {}
+PmergeMe& PmergeMe::operator=(PmergeMe const& copy) { m_deque = copy.m_deque; m_vector = copy.m_vector; return *this; }
 
 void	PmergeMe::pmerge(char **argv)
 {

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/21 19:22:03 by mruggier          #+#    #+#             */
+/*   Updated: 2024/07/21 19:22:04 by mruggier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RPN.hpp"
 
 int main(int argc, char **argv)
@@ -8,14 +20,21 @@ int main(int argc, char **argv)
 		return 1;
 	}
 	RPN rpn;
-	std::cout << "1. ";
 	rpn.Calculate(argv[1]);
+/*
 	std::cout << std::endl;
 
+	std::cout << "2.1 ";
+	RPN rpn21;
+	rpn21.Calculate("8 9 * 9 - 9 - 9 - 4 - 1 +");
 
-	std::cout << "2. ";
-	RPN rpn2;
-	rpn2.Calculate("8 9 * 9 - 9 - 9 - 4 - 1 +");
+	std::cout << "2.2 ";
+	RPN rpn22;
+	rpn22.Calculate("9 8 * 4 * 4 / 2 + 9 - 8 - 8 - 1 - 6 -");
+
+	std::cout << "2.3 ";
+	RPN rpn23;
+	rpn23.Calculate("1 2 * 2 / 2 + 5 * 6 - 1 3 * - 4 5 * * 8 /");
 
 	std::cout << "3. ";
 	RPN rpn3;
@@ -72,5 +91,5 @@ int main(int argc, char **argv)
 	std::cout << "16. ";
 	RPN rpn16;
 	rpn16.Calculate("1 0 /");
-	
+*/
 }

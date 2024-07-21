@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/21 19:21:38 by mruggier          #+#    #+#             */
+/*   Updated: 2024/07/21 19:21:39 by mruggier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
@@ -18,11 +30,11 @@ class BitcoinExchange
 		float input_value;
 		float output_value;
 		char *file_name;
-		BitcoinExchange() {}
+		BitcoinExchange();
 
 	public:
-		BitcoinExchange(char *str) : file_name(str) {}
-		~BitcoinExchange() {}
+		BitcoinExchange(char *str);
+		~BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange &copy);
 		BitcoinExchange &operator=(const BitcoinExchange &copy);
 
