@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruggier <mruggier@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: mruggier <mruggier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 19:21:18 by mruggier          #+#    #+#             */
-/*   Updated: 2024/07/21 19:21:19 by mruggier         ###   ########.fr       */
+/*   Updated: 2024/07/22 12:43:17 by mruggier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void BitcoinExchange::btc()
 
 	std::string line;
 	getline(file, line); // Salta la prima riga
+	if (line != "date | value")
+	{
+		std::cerr << "Error: bad input => " << line << std::endl;
+		return;
+	}
 	while (getline(file, line))
 	{
 		try
